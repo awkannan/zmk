@@ -1,0 +1,6 @@
+# Copyright (c) 2023 Andrew Kannan
+# SPDX-License-Identifier: MIT
+
+config BOARD_BAKENEKO60
+    bool "Bakeneko60"
+    depends on SOC_NRF52840_QIAA
