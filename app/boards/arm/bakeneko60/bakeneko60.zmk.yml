@@ -1,6 +1,6 @@
 file_format: "1"
 id: bakeneko60
-name: Bakeneko60
+name: bakeneko60
 type: board
 arch: arm
 features:
@@ -9,4 +9,4 @@ features:
 outputs:
   - usb
   - ble
-url: https://cannonkeys.com
+url: https://cannonkeys.com/
