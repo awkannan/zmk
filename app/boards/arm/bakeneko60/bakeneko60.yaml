@@ -1,5 +1,5 @@
 identifier: bakeneko60
-name: Bakeneko60
+name: bakeneko60
 type: mcu
 arch: arm
 toolchain:
