@@ -82,7 +82,7 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                       R
     ext-power {
         compatible = "zmk,ext-power-generic";
         label = "EXT_POWER";
-        control-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
+        control-gpios = <&gpio1 9 GPIO_ACTIVE_HIGH>;
     };
 
     vbatt: vbatt {
