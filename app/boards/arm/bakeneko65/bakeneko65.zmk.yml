@@ -1,0 +1,11 @@
+file_format: "1"
+id: bakeneko65
+name: bakeneko65
+type: board
+arch: arm
+features:
+  - keys
+outputs:
+  - usb
+  - ble
+url: https://cannonkeys.com/
