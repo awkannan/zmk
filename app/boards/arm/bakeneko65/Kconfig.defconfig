@@ -4,7 +4,7 @@
 if BOARD_BAKENEKO65
 
 config ZMK_KEYBOARD_NAME
-    default "Bakeneko65_Wireless"
+    default "CK65 W"
 
 if USB_DEVICE_STACK
 
