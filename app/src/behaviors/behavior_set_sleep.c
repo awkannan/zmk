@@ -10,6 +10,8 @@
 #include <drivers/behavior.h>
 #include <zephyr/logging/log.h>
 
+#include <dt-bindings/zmk/set_sleep.h>
+
 #include <zmk/behavior.h>
 #include <zmk/activity.h>
 
@@ -72,7 +74,7 @@ static const struct behavior_driver_api behavior_set_sleep_driver_api = {
     .binding_pressed = on_keymap_binding_pressed,
     .locality = BEHAVIOR_LOCALITY_GLOBAL,
 #if IS_ENABLED(CONFIG_ZMK_BEHAVIOR_METADATA)
-    .get_parameter_metadata = zmk_behavior_get_empty_param_metadata,
+    .parameter_metadata = &metadata,
 #endif // IS_ENABLED(CONFIG_ZMK_BEHAVIOR_METADATA)
 };
 
