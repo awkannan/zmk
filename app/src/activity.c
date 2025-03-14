@@ -58,7 +58,7 @@ static struct runtime_sleep_state sleep_state = {.enabled = true};
 
 #if IS_ENABLED(CONFIG_SETTINGS) && IS_ENABLED(CONFIG_ZMK_SLEEP)
 static int sleep_settings_load_cb(const char *name, size_t len, settings_read_cb read_cb,
-                                      void *cb_arg) {
+                                  void *cb_arg) {
     const char *next;
     if (settings_name_steq(name, "state", &next) && !next) {
         if (len != sizeof(sleep_state)) {
@@ -71,8 +71,7 @@ static int sleep_settings_load_cb(const char *name, size_t len, settings_read_cb
     return -ENOENT;
 }
 
-SETTINGS_STATIC_HANDLER_DEFINE(sleep, "sleep", NULL, sleep_settings_load_cb, NULL,
-                               NULL);
+SETTINGS_STATIC_HANDLER_DEFINE(sleep, "sleep", NULL, sleep_settings_load_cb, NULL, NULL);
 
 static void sleep_save_work_handler(struct k_work *work) {
     settings_save_one("sleep/state", &sleep_state, sizeof(sleep_state));
@@ -84,7 +83,7 @@ static struct k_work_delayable sleep_save_work;
 
 #if IS_ENABLED(CONFIG_ZMK_SLEEP)
 
-void zmk_enable_sleep(void){
+void zmk_enable_sleep(void) {
     sleep_state.enabled = true;
     LOG_DBG("Enabling sleep\n");
 #if IS_ENABLED(CONFIG_SETTINGS)
@@ -92,7 +91,7 @@ void zmk_enable_sleep(void){
 #endif
 }
 
-void zmk_disable_sleep(void){
+void zmk_disable_sleep(void) {
     sleep_state.enabled = false;
     LOG_DBG("Disabling sleep\n");
 #if IS_ENABLED(CONFIG_SETTINGS)
@@ -101,7 +100,7 @@ void zmk_disable_sleep(void){
 
 }
 
-void zmk_toggle_sleep(void){
+void zmk_toggle_sleep(void) {
     LOG_DBG("Toggle sleep\n");
     sleep_state.enabled = !sleep_state.enabled;
 #if IS_ENABLED(CONFIG_SETTINGS)
