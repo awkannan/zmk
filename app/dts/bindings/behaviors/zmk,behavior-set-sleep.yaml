@@ -6,4 +6,3 @@ description: Set sleep behavior
 compatible: "zmk,behavior-set-sleep"
 
 include: one_param.yaml
-
