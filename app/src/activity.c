@@ -54,7 +54,7 @@ struct runtime_sleep_state {
 
 static struct runtime_sleep_state sleep_state = {.enabled = true};
 
-#endif
+#endif // IS_ENABLED(CONFIG_ZMK_SLEEP)
 
 #if IS_ENABLED(CONFIG_SETTINGS) && IS_ENABLED(CONFIG_ZMK_SLEEP)
 static int sleep_settings_load_cb(const char *name, size_t len, settings_read_cb read_cb,
@@ -80,12 +80,13 @@ static void sleep_save_work_handler(struct k_work *work) {
 
 static struct k_work_delayable sleep_save_work;
 
-#endif
+#endif // IS_ENABLED(CONFIG_SETTINGS) && IS_ENABLED(CONFIG_ZMK_SLEEP)
 
 #if IS_ENABLED(CONFIG_ZMK_SLEEP)
 
 void zmk_enable_sleep(void){
     sleep_state.enabled = true;
+    LOG_DBG("Enabling sleep\n");
 #if IS_ENABLED(CONFIG_SETTINGS)
     k_work_reschedule(&sleep_save_work, K_MSEC(CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE));
 #endif
@@ -93,6 +94,7 @@ void zmk_enable_sleep(void){
 
 void zmk_disable_sleep(void){
     sleep_state.enabled = false;
+    LOG_DBG("Disabling sleep\n");
 #if IS_ENABLED(CONFIG_SETTINGS)
     k_work_reschedule(&sleep_save_work, K_MSEC(CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE));
 #endif
@@ -100,13 +102,14 @@ void zmk_disable_sleep(void){
 }
 
 void zmk_toggle_sleep(void){
+    LOG_DBG("Toggle sleep\n");
     sleep_state.enabled = !sleep_state.enabled;
 #if IS_ENABLED(CONFIG_SETTINGS)
     k_work_reschedule(&sleep_save_work, K_MSEC(CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE));
 #endif
 }
 
-#endif
+#endif // IS_ENABLED(CONFIG_ZMK_SLEEP)
 
 
 int raise_event(void) {
