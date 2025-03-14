@@ -1,0 +1,9 @@
+# Copyright (c) 2025 Andrew Kannan (@awkannan)
+# SPDX-License-Identifier: MIT
+
+description: Set sleep behavior
+
+compatible: "zmk,behavior-set-sleep"
+
+include: one_param.yaml
+

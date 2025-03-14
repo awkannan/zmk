@@ -84,14 +84,14 @@ static struct k_work_delayable sleep_save_work;
 
 #if IS_ENABLED(CONFIG_ZMK_SLEEP)
 
-void enable_sleep(void){
+void zmk_enable_sleep(void){
     sleep_state.enabled = true;
 #if IS_ENABLED(CONFIG_SETTINGS)
     k_work_reschedule(&sleep_save_work, K_MSEC(CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE));
 #endif
 }
 
-void disable_sleep(void){
+void zmk_disable_sleep(void){
     sleep_state.enabled = false;
 #if IS_ENABLED(CONFIG_SETTINGS)
     k_work_reschedule(&sleep_save_work, K_MSEC(CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE));
@@ -99,7 +99,7 @@ void disable_sleep(void){
 
 }
 
-void toggle_sleep(void){
+void zmk_toggle_sleep(void){
     sleep_state.enabled = !sleep_state.enabled;
 #if IS_ENABLED(CONFIG_SETTINGS)
     k_work_reschedule(&sleep_save_work, K_MSEC(CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE));
