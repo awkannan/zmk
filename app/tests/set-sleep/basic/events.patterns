@@ -1,0 +1,3 @@
+s/.*zmk_enable_sleep: //p
+s/.*zmk_disable_sleep: //p
+s/.*zmk_toggle_sleep: //p
