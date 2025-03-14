@@ -97,7 +97,6 @@ void zmk_disable_sleep(void) {
 #if IS_ENABLED(CONFIG_SETTINGS)
     k_work_reschedule(&sleep_save_work, K_MSEC(CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE));
 #endif
-
 }
 
 void zmk_toggle_sleep(void) {
@@ -109,7 +108,6 @@ void zmk_toggle_sleep(void) {
 }
 
 #endif // IS_ENABLED(CONFIG_ZMK_SLEEP)
-
 
 int raise_event(void) {
     return raise_zmk_activity_state_changed(
