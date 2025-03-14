@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Andrew Kannan (@awkannan)
+ * Copyright (c) 2025 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
  */
