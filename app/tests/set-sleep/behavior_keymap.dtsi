@@ -1,0 +1,18 @@
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/kscan_mock.h>
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/set_sleep.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+                &sleep SLEEP_ON
+                &sleep SLEEP_OFF
+                &sleep SLEEP_TOGG
+            >;
+        };
+    };
+};
