@@ -44,22 +44,6 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 BUILD_ASSERT(CONFIG_ZMK_RGB_UNDERGLOW_BRT_MIN <= CONFIG_ZMK_RGB_UNDERGLOW_BRT_MAX,
              "ERROR: RGB underglow maximum brightness is less than minimum brightness");
 
-enum rgb_underglow_effect {
-    UNDERGLOW_EFFECT_SOLID,
-    UNDERGLOW_EFFECT_BREATHE,
-    UNDERGLOW_EFFECT_SPECTRUM,
-    UNDERGLOW_EFFECT_SWIRL,
-    UNDERGLOW_EFFECT_NUMBER // Used to track number of underglow effects
-};
-
-struct rgb_underglow_state {
-    struct zmk_led_hsb color;
-    uint8_t animation_speed;
-    uint8_t current_effect;
-    uint16_t animation_step;
-    bool on;
-};
-
 static const struct device *led_strip;
 
 static struct led_rgb pixels[STRIP_NUM_PIXELS];
@@ -296,6 +280,18 @@ int zmk_rgb_underglow_get_state(bool *on_off) {
     *on_off = state.on;
     return 0;
 }
+
+int zmk_rgb_underglow_get_full_state(struct rgb_underglow_state *out_state) {
+    if (!out_state)
+        return -EINVAL;
+    
+    if (!led_strip)
+        return -ENODEV;
+
+    *out_state = state;
+    return 0;
+}
+
 
 int zmk_rgb_underglow_on(void) {
     if (!led_strip)
