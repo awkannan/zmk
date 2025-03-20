@@ -284,14 +284,13 @@ int zmk_rgb_underglow_get_state(bool *on_off) {
 int zmk_rgb_underglow_get_full_state(struct rgb_underglow_state *out_state) {
     if (!out_state)
         return -EINVAL;
-    
+
     if (!led_strip)
         return -ENODEV;
 
     *out_state = state;
     return 0;
 }
-
 
 int zmk_rgb_underglow_on(void) {
     if (!led_strip)
